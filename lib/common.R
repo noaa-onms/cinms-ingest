@@ -1,3 +1,4 @@
+options(repos = c("https://cran.rstudio.com", "https://cran.r-project.org"))
 librarian::shelf(
   dplyr, glue, here, librarian, purrr, readr, tibble, tidyr)
 

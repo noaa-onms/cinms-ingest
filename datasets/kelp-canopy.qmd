@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = T, message = F, warning = F)
 
 ```{r}
 source(here::here("lib/common.R"))
-remotes::install_github("crazycapivara/h3-r")
+# remotes::install_github("crazycapivara/h3-r")
 # shelf(
 #   leaftime,
 #   geojsonio, geojsonlint)

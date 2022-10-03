@@ -1,5 +1,5 @@
 ---
-title: "dir"
+pagetitle: "Home | CINMS-webCR ingest"
 listing:
   - id: list-datasets
     contents:
