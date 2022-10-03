@@ -1,5 +1,6 @@
 project:
   type: website
+  output-dir: .
 
 website:
   title: "Ingest SBC MBON for CINMS WebCR"
@@ -11,9 +12,13 @@ website:
 
 format:
   html:
+    code-fold: true
+    code-summary: "Show the code"
+    code-tools: true
     theme: cosmo
     css: styles.css
     toc: true
+    toc-location: left
 
 editor: visual
 
