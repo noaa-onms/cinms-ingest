@@ -110,20 +110,25 @@ ply_h3_b %>%
 
 ```{bash, eval=F}
 cd /Users/bbest/Github/noaa-onms/cinms-sbcmbon/data
-tippecanoe -f -z3 -o kelp-canopy_z3.mbtiles --coalesce-densest-as-needed kelp-canopy_h3-res3.geojson
-tippecanoe -f -Z3 -z5 -o kelp-canopy_z5.mbtiles --coalesce-densest-as-needed  kelp-canopy_h3-res5.geojson
-tippecanoe -f -Z5 -z7 -o kelp-canopy_z7.mbtiles --coalesce-densest-as-needed  kelp-canopy_h3-res7.geojson
-tippecanoe -f -Z7 -z14 -o kelp-canopy_z9.mbtiles --coalesce-densest-as-needed  kelp-canopy_h3-res9.geojson
+
+opts=`--no-tile-compression -f`
+
+tippecanoe $opts -z3 -o kelp-canopy_z3.mbtiles --coalesce-densest-as-needed kelp-canopy_h3-res3.geojson
+tippecanoe $opts -Z3 -z5 -o kelp-canopy_z5.mbtiles --coalesce-densest-as-needed  kelp-canopy_h3-res5.geojson
+tippecanoe $opts -Z5 -z7 -o kelp-canopy_z7.mbtiles --coalesce-densest-as-needed  kelp-canopy_h3-res7.geojson
+tippecanoe $opts -Z7 -z14 -o kelp-canopy_z9.mbtiles --coalesce-densest-as-needed  kelp-canopy_h3-res9.geojson
 
 # tile-join -f -o kelp-canopy.mbtiles kelp-canopy_z3.mbtiles kelp-canopy_z5.mbtiles kelp-canopy_z7.mbtiles kelp-canopy_z9.mbtiles
 
 tile-join -f -e kelp-canopy_tiles kelp-canopy_z3.mbtiles kelp-canopy_z5.mbtiles kelp-canopy_z7.mbtiles kelp-canopy_z9.mbtiles
+
+rm kelp-canopy_z*.mbtiles
 ```
 
 ## map
 
 ```{r}
-shelf(crul, rdeck, viridis)
+shelf(beakr, crul, rdeck, viridis)
 
 mb_token <- readLines("~/My Drive/private/mapbox_token_bdbest.txt")
 # mb_token <- readLines("/share/data/mapbox_token_bdbest.txt")
@@ -131,7 +136,44 @@ options(rdeck.mapbox_access_token = mb_token)
 
 # servr::httd()
 
-mvt_url <- "http://127.0.0.1:4321/data/kelp-canopy_tiles/{z}/{x}/{y}.pbf"
+library(beakr)
+
+# Create an new beakr instance
+beakr <- newBeakr()
+
+# beakr pipeline
+beakr %>%
+  # Enable CORS
+  cors() %>%
+  # Respond to GET requests at the "/hi" route
+  httpGET(path = "/hi", function(req, res, err) {
+    print("Hello, World!")
+  }) %>%
+  # Respond to GET requests at the "/bye" route
+  httpGET(path = "/bye", function(req, res, err) {
+    print("Farewell, my friends.")
+  }) %>%
+  # Host the directory of static files
+ serveStaticFiles("/data", here("data"), verbose = TRUE) %>%
+  # Start the server on port 25118
+  listen(host = "127.0.0.1", port = 25118, daemon = TRUE)
+
+# ------------------------------------------------------------
+# POINT YOUR BROWSER AT:
+# * http://127.0.0.1:25118/data/my_file.txt
+#
+# THEN, STOP THE SERVER WITH stopServer(beakr)
+# ------------------------------------------------------------
+
+# Stop the beakr instance server
+stopServer(beakr)
+
+# mvt_url <- "http://127.0.0.1:4321/data/kelp-canopy_tiles/{z}/{x}/{y}.pbf"
+# mvt_url <- "https://noaa-onms.github.io/cinms-sbcmbon/data/kelp-canopy_tiles/{z}/{x}/{y}.pbf"
+mvt_url <- "http://127.0.0.1:25118/data/kelp-canopy_tiles/{z}/{x}/{y}.pbf"
+
+# mvt_url <- "https://ahocevar.com/geoserver/gwc/service/tms/1.0.0/ne:ne_10m_admin_0_countries@EPSG%3A900913@pbf/{z}/{x}/{-y}.pbf"
+# https://ahocevar.com/geoserver/gwc/service/tms/1.0.0/ne:ne_10m_admin_0_countries@EPSG%3A900913@pbf/1/0/0.pbf
 
 rdeck(
   map_style = mapbox_dark(),
@@ -139,14 +181,19 @@ rdeck(
     c(xmin=-180, ymin=-90, xmax=180, ymax=90),
     crs = st_crs(4326))) %>% 
   add_mvt_layer(
-    id   = "h3_hex",
-    name = "Hexagons",
+    # id   = "h3_hex",
+    # name = "Hexagons",
+    # id   = "iso_a3",
+    # name = "iso_a3",
+    id   = "2022_2",
+    name = "2022_2",
     data = mvt_url,
-    get_fill_color = scale_color_linear(
-      col = "2022_2",
-      palette = viridis(6, alpha=0.5),
-      limits = c(0, 1)),
+    # get_fill_color = scale_color_linear(
+    #   col = "2022_2",
+    #   palette = viridis(6, alpha=0.5),
+    #   limits = c(0, 1)),
     auto_highlight = TRUE,
     pickable = TRUE,
+    # tooltip = c("iso_a3"))
     tooltip = c("2022_2"))
 ```
