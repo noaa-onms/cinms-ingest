@@ -128,9 +128,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-description"],
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -160,7 +160,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">CINMS-webCR ingest</span>
+    <span class="navbar-title">CINMS ingest</span>
   </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
@@ -206,9 +206,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <thead>
 <tr class="header">
 <th><strong>Name</strong></th>
-<th><strong>EDI dataset</strong></th>
+<th><strong>EDI#</strong></th>
 <th><strong>EDI filename</strong></th>
 <th><strong>CINMS page</strong></th>
+<th>Ingested</th>
 </tr>
 </thead>
 <tbody>
@@ -218,6 +219,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td><br>
 </td>
 <td><a href="https://noaa-onms.github.io/cinms/modals/kelp-canopy.html">kelp-canopy</a></td>
+<td><a href="./datasets/kelp-canopy.html">kelp-canopy</a></td>
 </tr>
 <tr class="even">
 <td>Abalone</td>
@@ -225,30 +227,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td><br>
 </td>
 <td><a href="https://noaa-onms.github.io/cinms/modals/abalone.html">abalone</a></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>Deeper water fish-effective number of species</td>
 <td><a href="https://portal.edirepository.org/nis/mapbrowse?scope=edi&amp;identifier=110">110</a></td>
 <td>deep_fish.csv</td>
 <td><a href="https://noaa-onms.github.io/cinms/modals/biodiversity_deep-seafloor.html">biodiversity_deep-seafloor</a></td>
+<td></td>
 </tr>
 <tr class="even">
 <td>Kelp forest fish - effective number of species</td>
 <td><a href="https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&amp;identifier=17">17</a></td>
 <td>mbon_fish.csv</td>
 <td><a href="https://noaa-onms.github.io/cinms/modals/biodiversity_kelp-forest.html">biodiversity_kelp-forest</a></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>Bottom mobile invertebrates -effective number of species</td>
 <td><a href="https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&amp;identifier=19">19</a></td>
 <td>mbon_invert.csv</td>
 <td><a href="https://noaa-onms.github.io/cinms/modals/biodiversity_kelp-forest.html">biodiversity_kelp-forest</a></td>
+<td></td>
 </tr>
 <tr class="even">
 <td>Sheephead LTER trend</td>
 <td><a href="https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&amp;identifier=17">17</a></td>
 <td>lter_sheephead.csv</td>
 <td><a href="https://noaa-onms.github.io/cinms/modals/ca-sheephead.html">ca-sheephead</a></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>Sheephead PISCO/CHIS trend</td>
@@ -256,12 +263,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td><br>
 </td>
 <td><a href="https://noaa-onms.github.io/cinms/modals/ca-sheephead.html">ca-sheephead</a></td>
+<td></td>
 </tr>
 <tr class="even">
 <td>Sea cucumbers SBCLTER data</td>
 <td><a href="https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&amp;identifier=19">19</a></td>
 <td>lter_seacucumber.csv</td>
 <td><a href="https://noaa-onms.github.io/cinms/modals/sea-cucumbers.html">sea-cucumbers</a></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>Sea stars</td>
@@ -269,12 +278,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td><br>
 </td>
 <td><a href="https://noaa-onms.github.io/cinms/modals/kelp-forest_seastars.html">kelp-forest_seastars</a></td>
+<td></td>
 </tr>
 <tr class="even">
 <td>Sea Urchin Island vs Mainland</td>
 <td><a href="https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&amp;identifier=19">19</a></td>
 <td>lter_urchin.csv</td>
 <td><a href="https://noaa-onms.github.io/cinms/modals/sea-urchins.html">sea-urchins</a></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>Spiny-lobster</td>
@@ -282,6 +293,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td><br>
 </td>
 <td><a href="https://noaa-onms.github.io/cinms/modals/spiny-lobster.html">spiny-lobster</a></td>
+<td></td>
 </tr>
 <tr class="even">
 <td>Understory algae - kelp</td>
@@ -289,6 +301,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td><br>
 </td>
 <td><a href="https://noaa-onms.github.io/cinms/modals/understory-algae.html">understory-algae</a></td>
+<td></td>
 </tr>
 <tr class="odd">
 <td>Understory algae - Red algae</td>
@@ -296,6 +309,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td><br>
 </td>
 <td><a href="https://noaa-onms.github.io/cinms/modals/understory-algae.html">understory-algae</a></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -308,15 +322,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-list-datasets">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1664821565252" data-listing-reading-time-sort="4.38">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1664839378218" data-listing-reading-time-sort="4.63">
 <a href="./datasets/kelp-canopy.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./images/kelp-canopy_h3-map.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Kelp canopy biomass
 </h5>
 <div class="card-text listing-description">
-
+Satellite derived kelp canopy biomass (kg/m²) since 1984 across the coast of California, Oregon and Washington
 </div>
 <div class="card-attribution card-text-small start">
 <div class="listing-author">
@@ -493,35 +510,35 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>The following datasets were downloaded onto my local hard drive, which is synchronized to <span class="co">[</span><span class="ot">sbc-mbon - Google Drive</span><span class="co">](https://drive.google.com/drive/folders/1SHmIS4YWPCKoenSHe-F0IwQYUptEaDQS)</span>.</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------------------------------------------------------------------------------------------+</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>| **Name**                                                 | **EDI dataset**                                                                                                                                       | **EDI filename**     | **CINMS page**                                                                                         |</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>+==========================================================+=======================================================================================================================================================+======================+========================================================================================================+</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>| Kelp canopy biomass                                      | <span class="co">[</span><span class="ot">74</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&amp;identifier=74)</span>                                                                 | \                    | <span class="co">[</span><span class="ot">kelp-canopy</span><span class="co">](https://noaa-onms.github.io/cinms/modals/kelp-canopy.html)</span>                               |</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------------------------------------------------------------------------------------------+</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>| Abalone                                                  | <span class="co">[</span><span class="ot">6</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=edi&amp;identifier=6)</span>;<span class="co">[</span><span class="ot">7</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=edi&amp;identifier=7)</span> | \                    | <span class="co">[</span><span class="ot">abalone</span><span class="co">](https://noaa-onms.github.io/cinms/modals/abalone.html)</span>                                       |</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------------------------------------------------------------------------------------------+</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>| Deeper water fish-effective number of species            | <span class="co">[</span><span class="ot">110</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=edi&amp;identifier=110)</span>                                                                        | deep_fish.csv        | <span class="co">[</span><span class="ot">biodiversity_deep-seafloor</span><span class="co">](https://noaa-onms.github.io/cinms/modals/biodiversity_deep-seafloor.html)</span> |</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------------------------------------------------------------------------------------------+</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>| Kelp forest fish - effective number of species           | <span class="co">[</span><span class="ot">17</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&amp;identifier=17)</span>                                                                 | mbon_fish.csv        | <span class="co">[</span><span class="ot">biodiversity_kelp-forest</span><span class="co">](https://noaa-onms.github.io/cinms/modals/biodiversity_kelp-forest.html)</span>     |</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------------------------------------------------------------------------------------------+</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>| Bottom mobile invertebrates -effective number of species | <span class="co">[</span><span class="ot">19</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&amp;identifier=19)</span>                                                                 | mbon_invert.csv      | <span class="co">[</span><span class="ot">biodiversity_kelp-forest</span><span class="co">](https://noaa-onms.github.io/cinms/modals/biodiversity_kelp-forest.html)</span>     |</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------------------------------------------------------------------------------------------+</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>| Sheephead LTER trend                                     | <span class="co">[</span><span class="ot">17</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&amp;identifier=17)</span>                                                                 | lter_sheephead.csv   | <span class="co">[</span><span class="ot">ca-sheephead</span><span class="co">](https://noaa-onms.github.io/cinms/modals/ca-sheephead.html)</span>                             |</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------------------------------------------------------------------------------------------+</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>| Sheephead PISCO/CHIS trend                               | <span class="co">[</span><span class="ot">5</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=edi&amp;identifier=5)</span>;<span class="co">[</span><span class="ot">7</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=edi&amp;identifier=7)</span> | \                    | <span class="co">[</span><span class="ot">ca-sheephead</span><span class="co">](https://noaa-onms.github.io/cinms/modals/ca-sheephead.html)</span>                             |</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------------------------------------------------------------------------------------------+</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>| Sea cucumbers SBCLTER data                               | <span class="co">[</span><span class="ot">19</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&amp;identifier=19)</span>                                                                 | lter_seacucumber.csv | <span class="co">[</span><span class="ot">sea-cucumbers</span><span class="co">](https://noaa-onms.github.io/cinms/modals/sea-cucumbers.html)</span>                           |</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------------------------------------------------------------------------------------------+</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>| Sea stars                                                | <span class="co">[</span><span class="ot">6</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=edi&amp;identifier=6)</span>;<span class="co">[</span><span class="ot">7</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=edi&amp;identifier=7)</span> | \                    | <span class="co">[</span><span class="ot">kelp-forest_seastars</span><span class="co">](https://noaa-onms.github.io/cinms/modals/kelp-forest_seastars.html)</span>             |</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------------------------------------------------------------------------------------------+</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>| Sea Urchin Island vs Mainland                            | <span class="co">[</span><span class="ot">19</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&amp;identifier=19)</span>                                                                 | lter_urchin.csv      | <span class="co">[</span><span class="ot">sea-urchins</span><span class="co">](https://noaa-onms.github.io/cinms/modals/sea-urchins.html)</span>                               |</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------------------------------------------------------------------------------------------+</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>| Spiny-lobster                                            | <span class="co">[</span><span class="ot">6</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=edi&amp;identifier=6)</span>;<span class="co">[</span><span class="ot">7</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=edi&amp;identifier=7)</span> | \                    | <span class="co">[</span><span class="ot">spiny-lobster</span><span class="co">](https://noaa-onms.github.io/cinms/modals/spiny-lobster.html)</span>                           |</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------------------------------------------------------------------------------------------+</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>| Understory algae - kelp                                  | <span class="co">[</span><span class="ot">18</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&amp;identifier=18)</span>                                                                 | \                    | <span class="co">[</span><span class="ot">understory-algae</span><span class="co">](https://noaa-onms.github.io/cinms/modals/understory-algae.html)</span>                     |</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------------------------------------------------------------------------------------------+</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>| Understory algae - Red algae                             | <span class="co">[</span><span class="ot">15</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&amp;identifier=15)</span>                                                                 | \                    | <span class="co">[</span><span class="ot">understory-algae</span><span class="co">](https://noaa-onms.github.io/cinms/modals/understory-algae.html)</span>                     |</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------------------------------------------------------------------------------------------+</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------------------------------------------------------------------------------------------+-----------------------------------------+</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>| **Name**                                                 | **EDI#**                                                                                                                                              | **EDI filename**     | **CINMS page**                                                                                         | Ingested                                |</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>+==========================================================+=======================================================================================================================================================+======================+========================================================================================================+=========================================+</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>| Kelp canopy biomass                                      | <span class="co">[</span><span class="ot">74</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&amp;identifier=74)</span>                                                                 | \                    | <span class="co">[</span><span class="ot">kelp-canopy</span><span class="co">](https://noaa-onms.github.io/cinms/modals/kelp-canopy.html)</span>                               | <span class="co">[</span><span class="ot">kelp-canopy</span><span class="co">](datasets/kelp-canopy.qmd)</span> |</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------------------------------------------------------------------------------------------+-----------------------------------------+</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>| Abalone                                                  | <span class="co">[</span><span class="ot">6</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=edi&amp;identifier=6)</span>;<span class="co">[</span><span class="ot">7</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=edi&amp;identifier=7)</span> | \                    | <span class="co">[</span><span class="ot">abalone</span><span class="co">](https://noaa-onms.github.io/cinms/modals/abalone.html)</span>                                       |                                         |</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------------------------------------------------------------------------------------------+-----------------------------------------+</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>| Deeper water fish-effective number of species            | <span class="co">[</span><span class="ot">110</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=edi&amp;identifier=110)</span>                                                                        | deep_fish.csv        | <span class="co">[</span><span class="ot">biodiversity_deep-seafloor</span><span class="co">](https://noaa-onms.github.io/cinms/modals/biodiversity_deep-seafloor.html)</span> |                                         |</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------------------------------------------------------------------------------------------+-----------------------------------------+</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>| Kelp forest fish - effective number of species           | <span class="co">[</span><span class="ot">17</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&amp;identifier=17)</span>                                                                 | mbon_fish.csv        | <span class="co">[</span><span class="ot">biodiversity_kelp-forest</span><span class="co">](https://noaa-onms.github.io/cinms/modals/biodiversity_kelp-forest.html)</span>     |                                         |</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------------------------------------------------------------------------------------------+-----------------------------------------+</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>| Bottom mobile invertebrates -effective number of species | <span class="co">[</span><span class="ot">19</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&amp;identifier=19)</span>                                                                 | mbon_invert.csv      | <span class="co">[</span><span class="ot">biodiversity_kelp-forest</span><span class="co">](https://noaa-onms.github.io/cinms/modals/biodiversity_kelp-forest.html)</span>     |                                         |</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------------------------------------------------------------------------------------------+-----------------------------------------+</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>| Sheephead LTER trend                                     | <span class="co">[</span><span class="ot">17</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&amp;identifier=17)</span>                                                                 | lter_sheephead.csv   | <span class="co">[</span><span class="ot">ca-sheephead</span><span class="co">](https://noaa-onms.github.io/cinms/modals/ca-sheephead.html)</span>                             |                                         |</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------------------------------------------------------------------------------------------+-----------------------------------------+</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>| Sheephead PISCO/CHIS trend                               | <span class="co">[</span><span class="ot">5</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=edi&amp;identifier=5)</span>;<span class="co">[</span><span class="ot">7</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=edi&amp;identifier=7)</span> | \                    | <span class="co">[</span><span class="ot">ca-sheephead</span><span class="co">](https://noaa-onms.github.io/cinms/modals/ca-sheephead.html)</span>                             |                                         |</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------------------------------------------------------------------------------------------+-----------------------------------------+</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>| Sea cucumbers SBCLTER data                               | <span class="co">[</span><span class="ot">19</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&amp;identifier=19)</span>                                                                 | lter_seacucumber.csv | <span class="co">[</span><span class="ot">sea-cucumbers</span><span class="co">](https://noaa-onms.github.io/cinms/modals/sea-cucumbers.html)</span>                           |                                         |</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------------------------------------------------------------------------------------------+-----------------------------------------+</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>| Sea stars                                                | <span class="co">[</span><span class="ot">6</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=edi&amp;identifier=6)</span>;<span class="co">[</span><span class="ot">7</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=edi&amp;identifier=7)</span> | \                    | <span class="co">[</span><span class="ot">kelp-forest_seastars</span><span class="co">](https://noaa-onms.github.io/cinms/modals/kelp-forest_seastars.html)</span>             |                                         |</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------------------------------------------------------------------------------------------+-----------------------------------------+</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>| Sea Urchin Island vs Mainland                            | <span class="co">[</span><span class="ot">19</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&amp;identifier=19)</span>                                                                 | lter_urchin.csv      | <span class="co">[</span><span class="ot">sea-urchins</span><span class="co">](https://noaa-onms.github.io/cinms/modals/sea-urchins.html)</span>                               |                                         |</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------------------------------------------------------------------------------------------+-----------------------------------------+</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>| Spiny-lobster                                            | <span class="co">[</span><span class="ot">6</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=edi&amp;identifier=6)</span>;<span class="co">[</span><span class="ot">7</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=edi&amp;identifier=7)</span> | \                    | <span class="co">[</span><span class="ot">spiny-lobster</span><span class="co">](https://noaa-onms.github.io/cinms/modals/spiny-lobster.html)</span>                           |                                         |</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------------------------------------------------------------------------------------------+-----------------------------------------+</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>| Understory algae - kelp                                  | <span class="co">[</span><span class="ot">18</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&amp;identifier=18)</span>                                                                 | \                    | <span class="co">[</span><span class="ot">understory-algae</span><span class="co">](https://noaa-onms.github.io/cinms/modals/understory-algae.html)</span>                     |                                         |</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------------------------------------------------------------------------------------------+-----------------------------------------+</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>| Understory algae - Red algae                             | <span class="co">[</span><span class="ot">15</span><span class="co">](https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-sbc&amp;identifier=15)</span>                                                                 | \                    | <span class="co">[</span><span class="ot">understory-algae</span><span class="co">](https://noaa-onms.github.io/cinms/modals/understory-algae.html)</span>                     |                                         |</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+--------------------------------------------------------------------------------------------------------+-----------------------------------------+</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

@@ -3,7 +3,7 @@ project:
   output-dir: .
 
 website:
-  title: "CINMS-webCR ingest"
+  title: "CINMS ingest"
   navbar:
     left:
       - href: index.qmd
