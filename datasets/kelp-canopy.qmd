@@ -166,7 +166,7 @@ beakr %>%
 # stopServer(beakr)
 ```
 
-
+:::{.column-page}
 ```{r}
 shelf(beakr, crul, rdeck, viridis)
 
@@ -183,6 +183,7 @@ b_max <- max(pull(ply_h3_b, `2022_2`))
 bb <- st_bbox(ply_h3_b)
 
 rdeck(
+  height = 800,
   map_style = mapbox_dark(),
   initial_bounds = bb) %>% 
   add_mvt_layer(
@@ -197,3 +198,4 @@ rdeck(
     pickable = TRUE,
     tooltip = c("2022_2"))
 ```
+:::
