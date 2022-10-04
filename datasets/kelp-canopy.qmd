@@ -197,5 +197,13 @@ rdeck(
     auto_highlight = TRUE,
     pickable = TRUE,
     tooltip = c("2022_2"))
+# TODO: time slider 
 ```
 :::
+
+## next steps
+
+- [ ] add points at finest zoom level
+- [ ] add land layer to map obscuring portion of hexagons on land 
+- [ ] add time slider, initially as Shiny app (easiest), secondly as JS in html
+- [ ] allow for arbitrary extraction by area of interest (AOI)
