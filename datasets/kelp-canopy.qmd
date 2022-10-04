@@ -174,10 +174,10 @@ mb_token <- readLines("~/My Drive/private/mapbox_token_bdbest.txt")
 # mb_token <- readLines("/share/data/mapbox_token_bdbest.txt")
 options(rdeck.mapbox_access_token = mb_token)
 
-# servr::httd()
+mvt_url <- "https://noaa-onms.github.io/cinms-ingest/data/kelp-canopy_tiles/{z}/{x}/{y}.pbf"
+# DEBUG: with local tiles 
+# mvt_url <- "http://127.0.0.1:25118/data/kelp-canopy_tiles/{z}/{x}/{y}.pbf"
 
-mvt_url <- "http://127.0.0.1:25118/data/kelp-canopy_tiles/{z}/{x}/{y}.pbf"
-# mvt_url <- "https://noaa-onms.github.io/cinms-ingest/data/kelp-canopy_tiles/{z}/{x}/{y}.pbf"
 
 b_max <- max(pull(ply_h3_b, `2022_2`))
 bb <- st_bbox(ply_h3_b)
